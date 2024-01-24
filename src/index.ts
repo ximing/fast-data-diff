@@ -117,8 +117,8 @@ const diffObjToPath = (to: any, from: any, res: any = {}, keyPrev = '') => {
     return res;
 };
 
-export const diff = function(newData: any, oldData: any) {
+export const diff = function(newData: any, oldData: any,keyPrev = '') {
     const target = {};
-    diffObjToPath(newData, oldData, target, '');
+    diffObjToPath(newData, oldData, target, keyPrev);
     return target;
 };
