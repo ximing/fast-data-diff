@@ -1,6 +1,6 @@
 {
     "name": "fast-data-diff",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "小程序高性能setData diff算法",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
