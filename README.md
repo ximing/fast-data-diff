@@ -1,3 +1,8 @@
+![build workflow](https://github.com/ximing/fast-data-diff/actions/workflows/build.yml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/ximing/fast-data-diff/badge.svg?branch=master)](https://coveralls.io/github/ximing/fast-data-diff?branch=master)
+![NPM](https://img.shields.io/npm/l/fast-data-diff?style=flat-square)
+![npm bundle size](https://img.shields.io/bundlephobia/min/fast-data-diff?style=flat-square)
+
 ### 使用
 
 ```javascript
