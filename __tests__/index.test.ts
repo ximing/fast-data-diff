@@ -1,13 +1,6 @@
 import { diff } from '../src';
 
-// global.window = {};
-
 describe('diff', () => {
-    /**
-     * @type {Element} scratch
-     */
-    let scratch;
-
     beforeEach(() => {});
     test('object', () => {
         expect(diff({}, {})).toStrictEqual({});
