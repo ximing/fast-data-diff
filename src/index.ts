@@ -64,7 +64,14 @@ const diffArrToPath = (to: any[], from: any[], res: any = {}, keyPrev = '') => {
 const diffObjToPath = (to: any, from: any, res: any = {}, keyPrev = '') => {
     const keys = keyList(to);
     const len = keys.length;
-
+    if (to == null) {
+        res[keyPrev] = null;
+        return res;
+    }
+    if (from == null) {
+        res[keyPrev] = to;
+        return res;
+    }
     for (let i = 0; i < len; i++) {
         const key = keys[i];
         const toItem = to[key];
