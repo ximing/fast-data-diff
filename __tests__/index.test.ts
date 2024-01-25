@@ -71,5 +71,33 @@ describe('diff', () => {
             'c.e.f': 'hello world',
             i: ['a', 'b']
         });
+
+        expect(diff({ a: {} }, { a: null })).toStrictEqual({ a: {} });
+    });
+    test('null', () => {
+        expect(diff({}, null, 'test')).toStrictEqual({ test: {} });
+        expect(diff(null, {}, 'test')).toStrictEqual({ test: null });
+    });
+    test('array', () => {
+        expect(diff({ a: [1, 2] }, { a: {} })).toStrictEqual({ a: [1, 2] });
+        expect(diff({ a: [[1, 2], 3] }, { a: [{}, 3] })).toStrictEqual({ 'a[0]': [1, 2] });
+        expect(diff({ a: [[1, 2], 3] }, { a: [[0, 1, 2], 3] })).toStrictEqual({ 'a[0]': [1, 2] });
+        expect(diff({ a: [[1, 2], 3] }, { a: [[2, 3], 3] })).toStrictEqual({
+            'a[0][0]': 1,
+            'a[0][1]': 2
+        });
+        expect(diff({ a: [{ a: 1 }, 3] }, { a: [{ a: 2 }, 3] })).toStrictEqual({ 'a[0].a': 1 });
+        expect(diff({ a: [[null, 2], 3] }, { a: [[{ a: 2 }], 3] })).toStrictEqual({
+            'a[0][0]': null,
+            'a[0][1]': 2
+        });
+        expect(
+            diff({ a: [[{ a: 3, b: undefined }], 3] }, { a: [[{ a: 2, b: 3 }], 3] })
+        ).toStrictEqual({
+            'a[0][0]': {
+                a: 3,
+                b: undefined
+            }
+        });
     });
 });

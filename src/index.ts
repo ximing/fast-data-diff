@@ -62,8 +62,6 @@ const diffArrToPath = (to: any[], from: any[], res: any = {}, keyPrev = '') => {
 };
 
 const diffObjToPath = (to: any, from: any, res: any = {}, keyPrev = '') => {
-    const keys = keyList(to);
-    const len = keys.length;
     if (to == null) {
         res[keyPrev] = null;
         return res;
@@ -72,6 +70,8 @@ const diffObjToPath = (to: any, from: any, res: any = {}, keyPrev = '') => {
         res[keyPrev] = to;
         return res;
     }
+    const keys = keyList(to);
+    const len = keys.length;
     for (let i = 0; i < len; i++) {
         const key = keys[i];
         const toItem = to[key];
@@ -124,7 +124,7 @@ const diffObjToPath = (to: any, from: any, res: any = {}, keyPrev = '') => {
     return res;
 };
 
-export const diff = function(newData: any, oldData: any,keyPrev = '') {
+export const diff = function(newData: any, oldData: any, keyPrev = '') {
     const target = {};
     diffObjToPath(newData, oldData, target, keyPrev);
     return target;
